@@ -15,5 +15,5 @@ before_script:
 build:
   stage: build
   script:
-    - docker build --pull -t $IMAGE_NAME
+    - docker build --pull -t $IMAGE_NAME .
     - docker push $IMAGE_NAME
