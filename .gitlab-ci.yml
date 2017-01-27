@@ -7,7 +7,7 @@ stages:
   - build
 
 variables:
-  IMAGE_NAME: locksidian/$CI_PROJECT_ID:$CI_BUILD_REF_NAME
+  LOCKSIDIAN_IMAGE: registry.gitlab.com/locksidian/locksidian-ci:latest
 
 before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
@@ -15,5 +15,5 @@ before_script:
 build:
   stage: build
   script:
-    - docker build --pull -t $IMAGE_NAME .
-    - docker push $IMAGE_NAME
+    - docker build -t $LOCKSIDIAN_IMAGE .
+    - docker push $LOCKSIDIAN_IMAGE
