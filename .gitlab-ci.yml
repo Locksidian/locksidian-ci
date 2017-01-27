@@ -1,0 +1,19 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - build
+
+variables:
+  IMAGE_NAME: registry.gitlab.com/locksidian/$CI_PROJECT_ID:$CI_BUILD_REF_NAME
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+
+build:
+  stage: build
+  script:
+    - docker build --pull -t $IMAGE_NAME
+    - docker push $IMAGE_NAME
