@@ -7,7 +7,7 @@ stages:
   - build
 
 variables:
-  LOCKSIDIAN_IMAGE: registry.gitlab.com/locksidian/locksidian-ci:$CI_BUILD_REF_NAME
+  LOCKSIDIAN_IMAGE: registry.gitlab.com/locksidian/locksidian-ci:$CI_BUILD_REF_SLUG
 
 before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
