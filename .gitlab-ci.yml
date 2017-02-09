@@ -15,5 +15,5 @@ before_script:
 build:
   stage: build
   script:
-    - docker build -t $LOCKSIDIAN_IMAGE .
+    - docker build -t $LOCKSIDIAN_IMAGE ./locksidian/
     - docker push $LOCKSIDIAN_IMAGE
