@@ -1,11 +1,21 @@
 FROM debian:latest
 MAINTAINER Valentin Fries <contact@fries.io>
 
-RUN apt-get update && \
-    apt-get install -y curl g++ git libsqlite3-dev && \
-    curl -sSf https://sh.rustup.rs/ | sh -s -- --default-toolchain nightly -y && \
-    apt-get clean && \
-    rm -rf /tmp/*
+# Installing linux environment stuffs
+RUN apt-get update\
+    && apt-get install -y curl\
+                        g++\
+                        git\
+                        libsqlite3-dev
 
-ENV PATH=/root/.cargo/bin:$PATH \
+# Configuring Rust development environment
+RUN curl -sSf https://sh.rustup.rs/ | sh -s -- --default-toolchain nightly -y
+
+# Cleaning image
+RUN apt-get clean\
+    && rm -rf /var/lib/apt/lists/*\
+    && rm -rf /tmp/*
+
+# Configuring image
+ENV PATH=/root/.cargo/bin:$PATH\
     USER=root
