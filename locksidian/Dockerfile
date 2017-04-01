@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:jessie
 MAINTAINER Valentin Fries <contact@fries.io>
 
 # Installing linux environment stuffs
