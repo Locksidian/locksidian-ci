@@ -6,7 +6,8 @@ RUN apt-get update\
     && apt-get install -y curl\
                         g++\
                         git\
-                        libsqlite3-dev
+                        libsqlite3-dev\
+                        libssl-dev
 
 # Configuring Rust development environment
 RUN curl -sSf https://sh.rustup.rs/ | sh -s -- --default-toolchain nightly -y
