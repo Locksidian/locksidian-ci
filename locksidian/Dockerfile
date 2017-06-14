@@ -8,10 +8,24 @@ RUN apt-get update &&\
                         git\
                         libsqlite3-dev\
                         libssl-dev\
-                        pkg-config
+                        pkg-config \
+                        libcurl4-openssl-dev\
+                        libelf-dev\
+                        libdw-dev\
+                        cmake
 
 # Configure Rust development environment
 RUN curl -sSf https://sh.rustup.rs/ | sh -s -- --default-toolchain nightly -y
+
+# Install kcov
+RUN wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz &&\
+    tar xzf master.tar.gz &&\
+    cd kcov-master &&\
+    mkdir build &&\
+    cd build &&\
+    cmake .. &&\
+    make &&\
+    make install\
 
 # Clean image
 RUN apt-get clean &&\
