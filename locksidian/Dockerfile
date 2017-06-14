@@ -4,6 +4,7 @@ MAINTAINER Valentin Fries <contact@fries.io>
 # Install dependencies
 RUN apt-get update &&\
     apt-get install -y curl\
+                        wget\
                         g++\
                         git\
                         libsqlite3-dev\
