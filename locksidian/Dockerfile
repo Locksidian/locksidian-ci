@@ -13,7 +13,8 @@ RUN apt-get update &&\
                         libcurl4-openssl-dev\
                         libelf-dev\
                         libdw-dev\
-                        cmake
+                        cmake\
+                        python
 
 # Configure Rust development environment
 RUN curl -sSf https://sh.rustup.rs/ | sh -s -- --default-toolchain nightly -y
@@ -26,7 +27,7 @@ RUN wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz &&\
     cd build &&\
     cmake .. &&\
     make &&\
-    make install\
+    make install
 
 # Clean image
 RUN apt-get clean &&\
