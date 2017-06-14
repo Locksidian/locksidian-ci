@@ -3,20 +3,15 @@ MAINTAINER Valentin Fries <contact@fries.io>
 
 # Install dependencies
 RUN apt-get update &&\
-    apt-get install -y curl\
-                        wget\
-                        g++\
-                        git\
-                        libsqlite3-dev\
-                        libssl-dev\
-                        pkg-config \
-                        libcurl4-openssl-dev\
-                        libelf-dev\
-                        libdw-dev\
-                        cmake\
-                        python\
-                        libbfd-dev\
-                        binutils-dev
+    apt-get install -y\
+        # Rust
+        curl wget g++ git\
+        # Locksidian
+        libsqlite3-dev libssl-dev pkg-config\
+        # kcov
+        cmake python\
+        libcurl4-openssl-dev libelf-dev libdw-dev\
+        libbfd-dev binutils-dev libiberty-dev
 
 # Configure Rust development environment
 RUN curl -sSf https://sh.rustup.rs/ | sh -s -- --default-toolchain nightly -y
