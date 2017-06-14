@@ -14,7 +14,8 @@ RUN apt-get update &&\
                         libelf-dev\
                         libdw-dev\
                         cmake\
-                        python
+                        python\
+                        binutils-dev
 
 # Configure Rust development environment
 RUN curl -sSf https://sh.rustup.rs/ | sh -s -- --default-toolchain nightly -y
