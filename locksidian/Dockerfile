@@ -1,23 +1,24 @@
 FROM debian:jessie
 MAINTAINER Valentin Fries <contact@fries.io>
 
-# Installing linux environment stuffs
-RUN apt-get update\
-    && apt-get install -y curl\
+# Install dependencies
+RUN apt-get update &&\
+    apt-get install -y curl\
                         g++\
                         git\
                         libsqlite3-dev\
                         libssl-dev\
-                        make
+                        make\
+                        pkg-config
 
-# Configuring Rust development environment
+# Configure Rust development environment
 RUN curl -sSf https://sh.rustup.rs/ | sh -s -- --default-toolchain nightly -y
 
-# Cleaning image
-RUN apt-get clean\
-    && rm -rf /var/lib/apt/lists/*\
-    && rm -rf /tmp/*
+# Clean image
+RUN apt-get clean &&\
+    rm -rf /var/lib/apt/lists/* &&\
+    rm -rf /tmp/*
 
-# Configuring image
+# Configure image
 ENV PATH=/root/.cargo/bin:$PATH\
     USER=root
