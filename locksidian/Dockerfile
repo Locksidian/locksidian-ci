@@ -8,6 +8,7 @@ RUN apt-get update &&\
                         git\
                         libsqlite3-dev\
                         libssl-dev\
+                        make\
                         pkg-config
 
 # Configure Rust development environment
