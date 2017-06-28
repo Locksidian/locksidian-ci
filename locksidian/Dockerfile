@@ -11,7 +11,7 @@ RUN apt-get update &&\
         # kcov
         cmake python\
         libcurl4-openssl-dev libelf-dev libdw-dev\
-        libbfd-dev binutils-dev libiberty-dev
+        libbfd-dev binutils-dev libiberty-dev zlib1g-dev
 
 # Configure Rust development environment
 RUN curl -sSf https://sh.rustup.rs/ | sh -s -- --default-toolchain nightly -y
